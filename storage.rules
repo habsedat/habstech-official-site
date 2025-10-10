@@ -1,0 +1,70 @@
+/**
+ * HABS TECHNOLOGIES GROUP
+ * Firebase Storage Security Rules
+ */
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner() {
+      return isAuthenticated() && 
+             firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'owner';
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+             (firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'owner' ||
+              firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin');
+    }
+    
+    function isEditor() {
+      return isAuthenticated() && 
+             (firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'owner' ||
+              firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+              firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'editor');
+    }
+    
+    function isValidImageSize() {
+      return request.resource.size < 10 * 1024 * 1024; // 10MB
+    }
+    
+    function isValidFileSize() {
+      return request.resource.size < 50 * 1024 * 1024; // 50MB
+    }
+    
+    // Public files - anyone can read, editors can write
+    match /public/{allPaths=**} {
+      allow read: if true;
+      allow write: if isEditor() && isValidImageSize();
+    }
+    
+    // Media files - anyone can read, editors can write
+    match /media/{allPaths=**} {
+      allow read: if true;
+      allow write: if isEditor() && isValidImageSize();
+    }
+    
+    // Application uploads - public can create, admins can read
+    match /uploads/applications/{applicationId}/{fileName} {
+      allow create: if isValidFileSize();
+      allow read: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+    
+    // System files - owner only
+    match /system/{allPaths=**} {
+      allow read, write: if isOwner();
+    }
+  }
+}
+
+
+
+
+

@@ -1,0 +1,275 @@
+/**
+ * Header Component Styles
+ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background: #F5F5F5; /* Cloud Silver */
+  border-bottom: 1px solid #0E3A8A; /* Electric Tech Blue border */
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(14, 58, 138, 0.1);
+}
+
+.header--scrolled {
+  background: rgba(245, 245, 245, 0.95); /* Cloud Silver with transparency */
+  backdrop-filter: blur(10px);
+  border-bottom-color: #6C63FF; /* Deep Creative Violet when scrolled */
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.15);
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  max-height: 60px; /* Compact professional height */
+}
+
+/* Logo */
+.header__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.header__logo-placeholder {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  max-width: 200px;
+  filter: contrast(1.1) brightness(1.05);
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
+.header__logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0E3A8A; /* Electric Tech Blue */
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.header__logo-tagline {
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: #0E0E10; /* Midnight Black */
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  margin-top: 0.1rem;
+}
+
+/* Desktop Navigation */
+.header__nav--desktop {
+  display: none;
+}
+
+/* Hide desktop nav on mobile */
+@media (max-width: 767px) {
+  .header__nav--desktop {
+    display: none !important;
+  }
+}
+
+/* Show desktop nav on desktop */
+@media (min-width: 768px) {
+  .header__nav--desktop {
+    display: flex;
+  }
+}
+
+/* Mobile Menu Button - Professional Design */
+.header__menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--color-primary) !important; /* Electric Tech Blue */
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 60;
+  box-shadow: 0 2px 8px rgba(14, 58, 138, 0.2);
+}
+
+.header__menu-button:hover {
+  background: var(--color-accent-a); /* Deep Creative Violet on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+}
+
+.header__menu-button--active {
+  background: var(--color-accent-a); /* Deep Creative Violet when active */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+}
+
+/* Always show on mobile, hide on desktop */
+@media (max-width: 767px) {
+  .header__menu-button {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Force hamburger lines to be visible */
+  .hamburger {
+    display: flex !important;
+    visibility: visible !important;
+  }
+  
+  .hamburger__line {
+    display: block !important;
+    visibility: visible !important;
+    background: white !important;
+    height: 3px !important;
+  }
+}
+
+/* Focus state for accessibility */
+.header__menu-button:focus-visible {
+  outline: 2px solid var(--color-accent-b);
+  outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .header__menu-button {
+    display: none !important;
+  }
+}
+
+/* Hamburger Icon - Professional 3-line animation */
+.hamburger {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  width: 20px !important;
+  height: 16px !important;
+  position: relative !important;
+  pointer-events: none;
+  gap: 2px !important;
+}
+
+.hamburger__line {
+  width: 100% !important;
+  height: 3px !important;
+  background: white !important;
+  border-radius: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+}
+
+/* Professional hamburger to X transformation */
+.hamburger--active .hamburger__line:nth-child(1) {
+  transform: translateY(4px) rotate(45deg) !important;
+}
+
+.hamburger--active .hamburger__line:nth-child(2) {
+  opacity: 0 !important;
+  transform: scaleX(0) !important;
+}
+
+.hamburger--active .hamburger__line:nth-child(3) {
+  transform: translateY(-4px) rotate(-45deg) !important;
+}
+
+/* Mobile Menu Overlay */
+.header__mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(14, 10, 16, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 45;
+  animation: fadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mobile Menu - Professional slide animation */
+.header__mobile-menu {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  max-height: calc(100vh - 60px);
+  background: white;
+  z-index: 50;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  overflow-y: auto;
+  border-radius: 0 0 16px 16px;
+}
+
+.header__mobile-menu--open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.header__mobile-menu-content {
+  height: 100%;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease;
+}
+
+/* Mobile menu header styles removed - no longer needed */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header__nav--mobile {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .header__mobile-menu,
+  .header__mobile-overlay {
+    display: none;
+  }
+}
+
+

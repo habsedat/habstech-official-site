@@ -1,0 +1,74 @@
+/**
+ * Input Component Styles
+ */
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.input-required {
+  color: #dc2626;
+  margin-left: 0.25rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  background: white;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(14, 58, 138, 0.1);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--color-accent-b);
+  outline-offset: 2px;
+}
+
+.input:disabled {
+  background: var(--color-light);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input--error {
+  border-color: #dc2626;
+}
+
+.input--error:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.input-error {
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin: 0;
+}
+
+

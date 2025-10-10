@@ -1,0 +1,122 @@
+/**
+ * Button Component Styles
+ */
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-accent-b);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Variants */
+.button--primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.button--primary:hover:not(:disabled) {
+  background: #0a2d6e;
+  box-shadow: var(--shadow-md);
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.button--secondary:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: white;
+}
+
+.button--accent {
+  background: var(--color-accent-a);
+  color: white;
+}
+
+.button--accent:hover:not(:disabled) {
+  background: #5952e6;
+  box-shadow: var(--shadow-md);
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.button--ghost:hover:not(:disabled) {
+  background: var(--color-light);
+}
+
+.button--danger {
+  background: #dc2626;
+  color: white;
+}
+
+.button--danger:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+/* Sizes */
+.button--sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  min-height: 2rem;
+}
+
+.button--md {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  min-height: 2.75rem;
+}
+
+.button--lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  min-height: 3.25rem;
+}
+
+/* Full width */
+.button--full {
+  width: 100%;
+}
+
+/* Loading state */
+.button--loading {
+  pointer-events: none;
+}
+
+.button__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button__content--hidden {
+  opacity: 0;
+}
+
+

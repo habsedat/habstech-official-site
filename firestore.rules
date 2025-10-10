@@ -1,0 +1,101 @@
+/**
+ * HABS TECHNOLOGIES GROUP
+ * Firestore Security Rules
+ */
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'owner';
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+             (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'owner' ||
+              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin');
+    }
+    
+    function isEditor() {
+      return isAuthenticated() && 
+             (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'owner' ||
+              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'editor');
+    }
+    
+    // Users collection - only admins can manage
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner();
+    }
+    
+    // Pages collection - public read if published, editor write
+    match /pages/{pageId} {
+      allow read: if resource.data.published == true || isEditor();
+      allow write: if isEditor();
+    }
+    
+    // Divisions collection - public read if published, editor write
+    match /divisions/{divisionId} {
+      allow read: if resource.data.published == true || isEditor();
+      allow write: if isEditor();
+    }
+    
+    // Services collection - public read if published, editor write
+    match /services/{serviceId} {
+      allow read: if resource.data.published == true || isEditor();
+      allow write: if isEditor();
+    }
+    
+    // Case Studies collection - public read if published, editor write
+    match /caseStudies/{caseStudyId} {
+      allow read: if resource.data.published == true || isEditor();
+      allow write: if isEditor();
+    }
+    
+    // Applications collection - public create, admin read/update
+    match /applications/{applicationId} {
+      allow create: if true; // Anyone can submit
+      allow read, update: if isAdmin();
+      allow delete: if isOwner();
+    }
+    
+    // Contacts collection - public create, admin read/update
+    match /contacts/{contactId} {
+      allow create: if true; // Anyone can submit
+      allow read, update: if isAdmin();
+      allow delete: if isOwner();
+    }
+    
+    // Media collection - editor write, public read for published
+    match /media/{mediaId} {
+      allow read: if resource.data.published == true || isEditor();
+      allow write: if isEditor();
+    }
+    
+    // Settings collection - public read, admin write
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Logs collection - admin write, owner read
+    match /logs/{logId} {
+      allow create: if isAdmin();
+      allow read: if isOwner();
+      allow update, delete: if false; // Logs are immutable
+    }
+  }
+}
+
+
+
+
+

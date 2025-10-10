@@ -1,0 +1,152 @@
+/**
+ * Navigation Component Styles
+ */
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navigation__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.125rem;
+}
+
+.navigation__item {
+  margin: 0;
+}
+
+.navigation__link {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #0E0E10; /* Midnight Black */
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.navigation__link:hover {
+  color: #0E3A8A; /* Electric Tech Blue */
+  background: rgba(14, 58, 138, 0.05);
+}
+
+.navigation__link--active {
+  color: #6C63FF; /* Deep Creative Violet */
+  background: rgba(108, 99, 255, 0.1);
+}
+
+.navigation__cta {
+  margin-left: 0.25rem;
+}
+
+.navigation__cta button {
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.8rem !important;
+  height: auto !important;
+  line-height: 1.2 !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.navigation__cta-link {
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.navigation__cta-link--active {
+  /* Active state styling - button will change variant to secondary */
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .navigation {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1px;
+    padding: 1px 8px 1px;
+    display: none; /* Hide by default on mobile */
+  }
+
+  /* Only show mobile navigation when it's in the mobile menu */
+  .header__nav--mobile.navigation {
+    display: flex;
+  }
+
+  .navigation__list {
+    flex-direction: column;
+    gap: 0;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+  }
+
+  .navigation__link {
+    padding: 1px 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .navigation__link:last-child {
+    border-bottom: none;
+  }
+
+  .navigation__link:hover {
+    background: rgba(108, 99, 255, 0.05); /* Deep Creative Violet hover */
+    padding-left: 1.75rem;
+    color: var(--color-accent-a);
+  }
+
+  .navigation__link--active {
+    background: rgba(108, 99, 255, 0.1); /* Deep Creative Violet active */
+    color: var(--color-accent-a);
+    font-weight: 600;
+  }
+
+  .navigation__link--active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--color-accent-a); /* Deep Creative Violet accent */
+  }
+
+  .navigation__cta {
+    margin-left: 0;
+    margin-top: 0;
+    padding: 1px 8px;
+  }
+
+  .navigation__cta button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--color-primary); /* Electric Tech Blue */
+    border-color: var(--color-primary);
+    height: auto;
+  }
+
+  .navigation__cta button:hover {
+    background: var(--color-accent-a); /* Deep Creative Violet on hover */
+    border-color: var(--color-accent-a);
+  }
+}
+
+

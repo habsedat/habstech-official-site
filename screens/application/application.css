@@ -1,0 +1,153 @@
+/**
+ * Application Form Page Styles
+ */
+
+.application {
+  min-height: 100vh;
+}
+
+/* Hero */
+.application-hero {
+  background: linear-gradient(135deg, rgba(14, 58, 138, 0.05) 0%, rgba(108, 99, 255, 0.05) 100%);
+  text-align: center;
+  padding: 4rem 0 3rem;
+}
+
+.application-hero__title {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.application-hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #6b7280;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Form Section */
+.application-form-section {
+  background: white;
+}
+
+.application-form {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.application-form__section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.application-form__heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 0.5rem;
+}
+
+.application-form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .application-form__row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.application-form__consent {
+  margin-top: 0.5rem;
+}
+
+.application-form__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.application-form__checkbox input[type='checkbox'] {
+  margin-top: 0.25rem;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.application-form__checkbox a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.application-form__checkbox a:hover {
+  color: var(--color-accent-a);
+}
+
+.application-form__error {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+/* Success State */
+.application-success {
+  background: white;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.application-success__content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.application-success__icon {
+  width: 100px;
+  height: 100px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  margin: 0 auto 2rem;
+}
+
+.application-success__title {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.application-success__text {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+
+
+
+

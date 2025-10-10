@@ -1,0 +1,85 @@
+/**
+ * Divisions Page Styles
+ */
+
+.divisions {
+  min-height: 100vh;
+}
+
+/* Hero */
+.divisions-hero {
+  background: linear-gradient(135deg, rgba(14, 58, 138, 0.05) 0%, rgba(108, 99, 255, 0.05) 100%);
+  text-align: center;
+  padding: 4rem 0 3rem;
+}
+
+.divisions-hero__title {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.divisions-hero__subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Divisions List */
+.divisions-list {
+  background: white;
+}
+
+.divisions-list__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .divisions-list__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .divisions-list__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.divisions-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.divisions-card__icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.divisions-card__details {
+  margin-top: 1rem;
+}
+
+.divisions-card__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent-a);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.divisions-card__text {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+
+
+
+

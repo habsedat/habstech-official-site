@@ -1,0 +1,172 @@
+/**
+ * Admin Sidebar Styles
+ */
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: var(--color-primary);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  overflow-y: auto;
+}
+
+/* Header */
+.sidebar__header {
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar__logo:hover {
+  opacity: 0.8;
+}
+
+.sidebar__logo-text {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+}
+
+.sidebar__logo-badge {
+  background: var(--color-accent-a);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Navigation */
+.sidebar__nav {
+  flex: 1;
+  padding: 1.5rem 0;
+}
+
+.sidebar__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.sidebar__link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.sidebar__link--active {
+  background: var(--color-accent-a);
+  color: white;
+  font-weight: 600;
+}
+
+.sidebar__link--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-accent-b);
+}
+
+.sidebar__icon {
+  font-size: 1.25rem;
+  width: 24px;
+  text-align: center;
+}
+
+.sidebar__label {
+  font-size: 0.9375rem;
+}
+
+/* Footer */
+.sidebar__footer {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar__exit {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.sidebar__exit:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar__header {
+    padding: 1.5rem 1rem;
+  }
+
+  .sidebar__link {
+    padding: 0.75rem 1rem;
+  }
+
+  .sidebar__label {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: none; /* Hide admin sidebar on mobile for non-admin pages */
+  }
+
+  .sidebar__nav {
+    padding: 1rem 0;
+  }
+
+  /* Only show admin sidebar on admin pages */
+  .admin-layout .sidebar {
+    display: flex;
+  }
+}
+
+
+
+

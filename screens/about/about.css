@@ -1,0 +1,158 @@
+/**
+ * About Page Styles
+ */
+
+.about {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.about-hero {
+  background: linear-gradient(135deg, rgba(14, 58, 138, 0.05) 0%, rgba(108, 99, 255, 0.05) 100%);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .about-hero {
+    padding: 6rem 0;
+  }
+}
+
+.about-hero__title {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.about-hero__text {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  color: var(--color-dark);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Mission & Vision */
+.about-mission-vision {
+  background: white;
+}
+
+.about-mission-vision__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .about-mission-vision__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+}
+
+.about-mission-vision__item {
+  text-align: center;
+}
+
+.about-mission-vision__title {
+  color: var(--color-accent-a);
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+.about-mission-vision__text {
+  font-size: 1.125rem;
+  color: var(--color-dark);
+  line-height: 1.7;
+}
+
+/* Values Section */
+.about-values {
+  background: var(--color-light);
+}
+
+.about-values__heading {
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+}
+
+.about-values__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .about-values__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-values__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.about-value {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.about-value:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.about-value__icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.about-value__name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.about-value__description {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Leadership Section */
+.about-leadership {
+  background: var(--color-primary);
+  color: white;
+  text-align: center;
+}
+
+.about-leadership__content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-leadership__title {
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.about-leadership__text {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+

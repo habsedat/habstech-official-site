@@ -1,0 +1,74 @@
+/**
+ * Status Chip Styles
+ */
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* Status variants */
+.status-chip--new {
+  background: rgba(108, 99, 255, 0.1);
+  color: var(--color-accent-a);
+}
+
+.status-chip--in-review {
+  background: rgba(14, 58, 138, 0.1);
+  color: var(--color-primary);
+}
+
+.status-chip--approved {
+  background: rgba(255, 213, 92, 0.2);
+  color: #d97706;
+}
+
+.status-chip--declined {
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
+}
+
+.status-chip--pending {
+  background: rgba(108, 99, 255, 0.1);
+  color: var(--color-accent-a);
+}
+
+.status-chip--completed {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.status-chip--archived {
+  background: rgba(107, 114, 128, 0.1);
+  color: #6b7280;
+}
+
+.status-chip--published {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.status-chip--draft {
+  background: rgba(107, 114, 128, 0.1);
+  color: #6b7280;
+}
+
+.status-chip--active {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.status-chip--inactive {
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
+}
+
+

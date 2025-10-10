@@ -1,0 +1,93 @@
+/**
+ * Admin Topbar Styles
+ */
+
+.topbar {
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.topbar__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.topbar__title-section {
+  flex: 1;
+}
+
+.topbar__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin: 0 0 0.25rem 0;
+}
+
+.topbar__subtitle {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.topbar__user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.125rem;
+}
+
+.topbar__user-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.topbar__user-role {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .topbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .topbar__content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .topbar__title {
+    font-size: 1.5rem;
+  }
+
+  .topbar__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .topbar__user {
+    align-items: flex-start;
+  }
+}
+
+
+
+
+
