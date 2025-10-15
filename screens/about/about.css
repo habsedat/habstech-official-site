@@ -50,9 +50,16 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
-  max-width: 100%;
-  margin: 0;
+  max-width: 1400px; /* Professional desktop width */
+  margin: 0 auto;
   padding: 0 2rem;
+}
+
+/* Desktop: Professional grid spacing */
+@media (min-width: 769px) {
+  .about-mission-vision__grid {
+    gap: 4rem;
+  }
 }
 
 /* Mobile: Remove gaps and padding for full screen usage */
@@ -60,13 +67,13 @@
   .about-mission-vision__grid {
     gap: 0;
     padding: 0 2px;
+    max-width: 100%;
   }
 }
 
 @media (min-width: 768px) {
   .about-mission-vision__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
   }
 }
 
@@ -101,12 +108,22 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  max-width: 1400px; /* Professional desktop width */
+  margin: 0 auto;
+}
+
+/* Desktop: Professional grid spacing */
+@media (min-width: 769px) {
+  .about-values__grid {
+    gap: 2rem;
+  }
 }
 
 /* Mobile: Remove gaps for full screen usage */
 @media (max-width: 768px) {
   .about-values__grid {
     gap: 0;
+    max-width: 100%;
   }
 }
 
@@ -131,6 +148,13 @@
   transition: all 0.3s ease;
 }
 
+/* Desktop: Professional card styling */
+@media (min-width: 769px) {
+  .about-value {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
 /* Mobile: Remove margins and make full width */
 @media (max-width: 768px) {
   .about-value {
@@ -140,6 +164,7 @@
     border-right: none;
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
+    box-shadow: none;
   }
 }
 

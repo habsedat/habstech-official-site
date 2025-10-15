@@ -21,8 +21,8 @@
 .application-hero__subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: rgba(255, 255, 255, 0.95);  /* White on gradient */
-  max-width: 100%;
-  margin: 0;
+  max-width: 800px; /* Professional desktop width */
+  margin: 0 auto;
   padding: 0 2rem;
   line-height: 1.6;
 }
@@ -31,6 +31,7 @@
 @media (max-width: 768px) {
   .application-hero__subtitle {
     padding: 0 2px;
+    max-width: 100%;
   }
 }
 
@@ -40,18 +41,31 @@
 }
 
 .application-form {
-  max-width: 100%;
-  margin: 0;
-  padding: 0 2rem;
+  max-width: 900px; /* Professional desktop width - slightly wider for application forms */
+  margin: 0 auto;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Desktop: Professional form styling */
+@media (min-width: 769px) {
+  .application-form {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* Mobile: Remove padding for full screen usage */
 @media (max-width: 768px) {
   .application-form {
-    padding: 0 2px;
+    padding: 2px;
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
@@ -92,7 +106,7 @@
   gap: 0.75rem;
   cursor: pointer;
   font-size: 0.9375rem;
-  color: #4b5563;
+  color: #1f2937; /* Darker color for better visibility */
   line-height: 1.5;
 }
 
@@ -102,6 +116,11 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+}
+
+.application-form__checkbox span {
+  color: #1f2937; /* Ensure span text is visible */
+  display: inline;
 }
 
 .application-form__checkbox a {
@@ -133,8 +152,8 @@
 
 .application-success__content {
   text-align: center;
-  max-width: 100%;
-  margin: 0;
+  max-width: 700px; /* Professional desktop width */
+  margin: 0 auto;
   padding: 0 2rem;
 }
 
@@ -142,6 +161,7 @@
 @media (max-width: 768px) {
   .application-success__content {
     padding: 0 2px;
+    max-width: 100%;
   }
 }
 

@@ -101,6 +101,17 @@
   min-height: 3.25rem;
 }
 
+/* Professional form button sizing */
+@media (min-width: 769px) {
+  .button--full {
+    max-width: 250px; /* Professional, more compact button width on desktop */
+    margin: 0 auto;
+    padding: 0.875rem 2rem; /* Professional button padding */
+    font-size: 1rem; /* Professional font size */
+    min-height: 2.875rem; /* Professional button height */
+  }
+}
+
 /* Full width */
 .button--full {
   width: 100%;

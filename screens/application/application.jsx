@@ -11,6 +11,7 @@ import Input from '@/components/ui/input';
 import Textarea from '@/components/ui/textarea';
 import Select from '@/components/ui/select';
 import Button from '@/components/ui/button';
+import { addDocument, COLLECTIONS } from '@/lib/firestore';
 
 const projectTypes = [
   { value: 'landing', label: 'Starter Landing (One-Page)' },
@@ -66,18 +67,26 @@ export default function ApplicationPage() {
     setError('');
 
     try {
-      const response = await fetch('/api/application', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+      // Save to Firebase
+      await addDocument(COLLECTIONS.APPLICATIONS, {
+        fullName: formData.name,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || '',
+        companyName: formData.company || '',
+        company: formData.company || '',
+        projectType: formData.projectType,
+        budget: formData.budget,
+        timeline: formData.timeline,
+        brief: formData.brief,
+        consent: formData.consent,
+        status: 'new',
+        read: false,
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit');
-      }
 
       setSubmitted(true);
     } catch (err) {
+      console.error('Application form error:', err);
       setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
@@ -244,6 +253,7 @@ export default function ApplicationPage() {
     </div>
   );
 }
+
 
 
 

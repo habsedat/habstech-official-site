@@ -21,8 +21,8 @@
 .contact-hero__subtitle {
   font-size: clamp(1.125rem, 2vw, 1.5rem);
   color: rgba(255, 255, 255, 0.95);  /* White on gradient */
-  max-width: 100%;
-  margin: 0;
+  max-width: 800px; /* Professional desktop width */
+  margin: 0 auto;
   padding: 0 2rem;
 }
 
@@ -30,6 +30,7 @@
 @media (max-width: 768px) {
   .contact-hero__subtitle {
     padding: 0 2px;
+    max-width: 100%;
   }
 }
 
@@ -39,18 +40,31 @@
 }
 
 .contact-form {
-  max-width: 100%;
-  margin: 0;
-  padding: 0 2rem;
+  max-width: 800px; /* Professional desktop width - forms should be narrower */
+  margin: 0 auto;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Desktop: Professional form styling */
+@media (min-width: 769px) {
+  .contact-form {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* Mobile: Remove padding for full screen usage */
 @media (max-width: 768px) {
   .contact-form {
-    padding: 0 2px;
+    padding: 2px;
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
@@ -76,7 +90,7 @@
   gap: 0.75rem;
   cursor: pointer;
   font-size: 0.9375rem;
-  color: #4b5563;
+  color: #1f2937; /* Darker color for better visibility */
   line-height: 1.5;
 }
 
@@ -86,6 +100,11 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+}
+
+.contact-form__checkbox span {
+  color: #1f2937; /* Ensure span text is visible */
+  display: inline;
 }
 
 .contact-form__checkbox a {
@@ -117,8 +136,8 @@
 
 .contact-success__content {
   text-align: center;
-  max-width: 100%;
-  margin: 0;
+  max-width: 600px; /* Professional desktop width */
+  margin: 0 auto;
   padding: 0 2rem;
 }
 
@@ -126,6 +145,7 @@
 @media (max-width: 768px) {
   .contact-success__content {
     padding: 0 2px;
+    max-width: 100%;
   }
 }
 

@@ -8,6 +8,7 @@
 import { useState } from 'react';
 import './topbar.css';
 import Button from '../ui/button';
+import Notifications from './notifications';
 
 export default function Topbar({ title, subtitle }) {
   const [user, setUser] = useState(null); // Will be populated with Firebase auth
@@ -26,6 +27,7 @@ export default function Topbar({ title, subtitle }) {
         </div>
 
         <div className="topbar__actions">
+          <Notifications />
           <div className="topbar__user">
             <span className="topbar__user-name">Admin User</span>
             <span className="topbar__user-role">Owner</span>
@@ -38,6 +40,8 @@ export default function Topbar({ title, subtitle }) {
     </div>
   );
 }
+
+
 
 
 

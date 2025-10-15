@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import './dashboard.css';
 import Topbar from '@/components/admin/topbar';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { subscribeToCollection, COLLECTIONS } from '@/lib/firestore';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -18,15 +19,47 @@ export default function AdminDashboard() {
     media: 0,
   });
 
-  // Fetch stats from Firebase
+  // Fetch real-time stats from Firebase
   useEffect(() => {
-    // TODO: Implement Firebase data fetching
-    setStats({
-      applications: 12,
-      contacts: 28,
-      caseStudies: 3,
-      media: 45,
-    });
+    // Subscribe to applications
+    const unsubscribeApplications = subscribeToCollection(
+      COLLECTIONS.APPLICATIONS,
+      (applications) => {
+        setStats(prev => ({ ...prev, applications: applications.length }));
+      }
+    );
+
+    // Subscribe to contacts
+    const unsubscribeContacts = subscribeToCollection(
+      COLLECTIONS.CONTACTS,
+      (contacts) => {
+        setStats(prev => ({ ...prev, contacts: contacts.length }));
+      }
+    );
+
+    // Subscribe to case studies
+    const unsubscribeCaseStudies = subscribeToCollection(
+      COLLECTIONS.CASE_STUDIES,
+      (caseStudies) => {
+        setStats(prev => ({ ...prev, caseStudies: caseStudies.length }));
+      }
+    );
+
+    // Subscribe to media
+    const unsubscribeMedia = subscribeToCollection(
+      COLLECTIONS.MEDIA,
+      (media) => {
+        setStats(prev => ({ ...prev, media: media.length }));
+      }
+    );
+
+    // Cleanup subscriptions on unmount
+    return () => {
+      unsubscribeApplications();
+      unsubscribeContacts();
+      unsubscribeCaseStudies();
+      unsubscribeMedia();
+    };
   }, []);
 
   return (
@@ -133,6 +166,8 @@ export default function AdminDashboard() {
     </>
   );
 }
+
+
 
 
 

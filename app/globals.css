@@ -186,9 +186,9 @@ a:focus-visible {
 
 .container {
   width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0 1.5rem;
+  max-width: 1400px; /* Professional desktop width */
+  margin: 0 auto;
+  padding: 0 2rem;
   box-sizing: border-box;
 }
 
@@ -196,6 +196,7 @@ a:focus-visible {
 @media (max-width: 768px) {
   .container {
     padding: 0 2px;
+    max-width: 100%;
   }
 }
 

@@ -60,17 +60,17 @@ service cloud.firestore {
       allow write: if isEditor();
     }
     
-    // Applications collection - public create, admin read/update
+    // Applications collection - public create, authenticated read/update
     match /applications/{applicationId} {
       allow create: if true; // Anyone can submit
-      allow read, update: if isAdmin();
+      allow read, update: if isAuthenticated(); // Any authenticated user can read
       allow delete: if isOwner();
     }
     
-    // Contacts collection - public create, admin read/update
+    // Contacts collection - public create, authenticated read/update
     match /contacts/{contactId} {
       allow create: if true; // Anyone can submit
-      allow read, update: if isAdmin();
+      allow read, update: if isAuthenticated(); // Any authenticated user can read
       allow delete: if isOwner();
     }
     
@@ -94,6 +94,8 @@ service cloud.firestore {
     }
   }
 }
+
+
 
 
 

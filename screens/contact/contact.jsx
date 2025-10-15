@@ -10,6 +10,7 @@ import './contact.css';
 import Input from '@/components/ui/input';
 import Textarea from '@/components/ui/textarea';
 import Button from '@/components/ui/button';
+import { addDocument, COLLECTIONS } from '@/lib/firestore';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ export default function ContactPage() {
     email: '',
     phone: '',
     company: '',
+    subject: '',
     message: '',
     consent: false,
   });
@@ -38,15 +40,18 @@ export default function ContactPage() {
     setError('');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+      // Save to Firebase
+      await addDocument(COLLECTIONS.CONTACTS, {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || '',
+        company: formData.company || '',
+        subject: formData.subject || 'General Inquiry',
+        message: formData.message,
+        consent: formData.consent,
+        status: 'new',
+        read: false,
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit');
-      }
 
       setSubmitted(true);
       setFormData({
@@ -54,10 +59,12 @@ export default function ContactPage() {
         email: '',
         phone: '',
         company: '',
+        subject: '',
         message: '',
         consent: false,
       });
     } catch (err) {
+      console.error('Contact form error:', err);
       setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
@@ -139,6 +146,14 @@ export default function ContactPage() {
               />
             </div>
 
+            <Input
+              label="Subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              placeholder="What is this regarding?"
+            />
+
             <Textarea
               label="Message"
               name="message"
@@ -179,6 +194,7 @@ export default function ContactPage() {
     </div>
   );
 }
+
 
 
 

@@ -1,10 +1,7 @@
 /**
- * Admin Applications Styles
+ * HABS TECHNOLOGIES GROUP
+ * Admin Contacts Screen Styles
  */
-
-.applications-filters {
-  max-width: 300px;
-}
 
 /* Table Action Button */
 .table-action-button {
@@ -24,7 +21,7 @@
   transform: translateY(-1px);
 }
 
-/* Application Modal Overlay */
+/* Contact Modal Overlay */
 .contact-modal-overlay {
   position: fixed;
   top: 0;
@@ -39,7 +36,7 @@
   padding: 1rem;
 }
 
-/* Application Modal */
+/* Contact Modal */
 .contact-modal {
   background: #1f2937;
   border-radius: 12px;
@@ -164,18 +161,4 @@
     width: 100%;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

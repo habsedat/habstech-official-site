@@ -44,6 +44,10 @@
         "destination": "/admin/applications.html"
       },
       {
+        "source": "/admin/contacts",
+        "destination": "/admin/contacts.html"
+      },
+      {
         "source": "/admin/content",
         "destination": "/admin/content.html"
       },

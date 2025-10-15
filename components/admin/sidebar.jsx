@@ -17,6 +17,7 @@ const menuItems = [
   { href: '/admin/content', label: 'Content', icon: '📝' },
   { href: '/admin/services', label: 'Services', icon: '💼' },
   { href: '/admin/applications', label: 'Applications', icon: '📋' },
+  { href: '/admin/contacts', label: 'Contacts', icon: '📧' },
   { href: '/admin/media', label: 'Media', icon: '🖼️' },
   { href: '/admin/users', label: 'Users', icon: '👥' },
   { href: '/admin/settings', label: 'Settings', icon: '⚙️' },
