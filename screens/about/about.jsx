@@ -3,6 +3,8 @@
  * About Page Screen
  */
 
+'use client';
+
 import './about.css';
 
 export default function AboutPage() {

@@ -3,9 +3,9 @@
  * Services & Pricing Page Screen
  */
 
-import Link from 'next/link';
+'use client';
+
 import './services.css';
-import Button from '@/components/ui/button';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 
 export default function ServicesPage() {
@@ -62,11 +62,12 @@ export default function ServicesPage() {
                 </CardContent>
 
                 <CardFooter>
-                  <Link href="/application" className="services-tier__cta">
-                    <Button variant="primary" fullWidth>
-                      Select This Tier
-                    </Button>
-                  </Link>
+                  <a 
+                    href="/application" 
+                    className="button button--primary button--full services-tier__cta"
+                  >
+                    Select This Tier
+                  </a>
                 </CardFooter>
               </Card>
             ))}
@@ -82,11 +83,12 @@ export default function ServicesPage() {
             <p className="services-cta__text">
               Every project is unique. Let's discuss your needs and create a custom proposal.
             </p>
-            <Link href="/application">
-              <Button variant="accent" size="lg">
-                Get a Custom Quote
-              </Button>
-            </Link>
+            <a 
+              href="/application"
+              className="button button--accent button--lg"
+            >
+              Get a Custom Quote
+            </a>
           </div>
         </div>
       </section>
@@ -148,6 +150,9 @@ const pricingTiers = [
     addons: ['Multi-currency', 'Subscriptions', 'Marketplace', 'Custom fulfillment'],
   },
 ];
+
+
+
 
 
 

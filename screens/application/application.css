@@ -8,22 +8,30 @@
 
 /* Hero */
 .application-hero {
-  background: linear-gradient(135deg, rgba(14, 58, 138, 0.05) 0%, rgba(108, 99, 255, 0.05) 100%);
+  background: linear-gradient(135deg, #0E3A8A 0%, #6C63FF 100%);
   text-align: center;
   padding: 4rem 0 3rem;
 }
 
 .application-hero__title {
-  color: var(--color-primary);
+  color: #ffffff;  /* White on gradient */
   margin-bottom: 1rem;
 }
 
 .application-hero__subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: #6b7280;
-  max-width: 700px;
-  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.95);  /* White on gradient */
+  max-width: 100%;
+  margin: 0;
+  padding: 0 2rem;
   line-height: 1.6;
+}
+
+/* Mobile: Remove padding for full screen usage */
+@media (max-width: 768px) {
+  .application-hero__subtitle {
+    padding: 0 2px;
+  }
 }
 
 /* Form Section */
@@ -32,11 +40,19 @@
 }
 
 .application-form {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
+
+/* Mobile: Remove padding for full screen usage */
+@media (max-width: 768px) {
+  .application-form {
+    padding: 0 2px;
+  }
 }
 
 .application-form__section {
@@ -117,8 +133,16 @@
 
 .application-success__content {
   text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 2rem;
+}
+
+/* Mobile: Remove padding for full screen usage */
+@media (max-width: 768px) {
+  .application-success__content {
+    padding: 0 2px;
+  }
 }
 
 .application-success__icon {

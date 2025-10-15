@@ -10,18 +10,21 @@
    ============================================ */
 
 @theme inline {
-  /* Brand Colors - Strict Palette */
-  --color-primary: #0E3A8A;          /* Electric Tech Blue */
-  --color-accent-a: #6C63FF;         /* Deep Creative Violet */
-  --color-accent-b: #FFD35C;         /* Bright Golden Yellow */
-  --color-dark: #0E0E10;             /* Midnight Black */
-  --color-light: #F5F5F5;            /* Cloud Silver */
+  /* Official Habs Technologies Group Brand Colors */
+  --color-primary: #0E3A8A;          /* Electric Tech Blue - Main identity */
+  --color-accent-a: #6C63FF;         /* Deep Creative Violet - Accents */
+  --color-accent-b: #FFD35C;         /* Bright Golden Yellow - CTAs */
+  --color-dark: #0E0E10;             /* Midnight Black - Text */
+  --color-light: #F5F5F5;            /* Cloud Silver - Light backgrounds */
   
   /* Semantic Color Mapping */
-  --color-background: #ffffff;
-  --color-foreground: var(--color-dark);
+  --color-background: #0E3A8A;       /* Electric Tech Blue primary background */
+  --color-foreground: #ffffff;       /* White text on blue background */
   --color-muted: var(--color-light);
-  --color-border: #E5E7EB;
+  --color-border: rgba(255, 255, 255, 0.2);  /* Light borders on blue */
+  
+  /* Gradient */
+  --gradient-hero: linear-gradient(135deg, #0E3A8A 0%, #6C63FF 100%);
   
   /* Typography - Professional Font Combination */
   --font-heading: 'Poppins', sans-serif;
@@ -67,8 +70,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--color-background);  /* Electric Tech Blue */
+  color: var(--color-foreground);       /* White text */
   line-height: 1.6;
   font-size: 1rem;
   font-weight: 400;
@@ -82,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 600;
   line-height: 1.2;
-  color: var(--color-dark);
+  color: #ffffff;  /* White headings on blue background */
   margin-bottom: 1rem;
 }
 
@@ -138,6 +141,7 @@ p, li, span {
   line-height: 1.6;
   font-size: 0.95rem;  /* Mobile: ~15px */
   margin-bottom: 1rem;
+  color: #ffffff;  /* White text on blue background */
 }
 
 /* Desktop body text size */
@@ -161,13 +165,13 @@ small {
 }
 
 a {
-  color: var(--color-primary);
+  color: #FFD35C;  /* Bright Golden Yellow */
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--color-accent-a);
+  color: #6C63FF;  /* Deep Creative Violet */
 }
 
 a:focus-visible {
@@ -182,9 +186,22 @@ a:focus-visible {
 
 .container {
   width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Mobile: Minimal margins for full screen usage */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 2px;
+  }
+}
+
+.container--constrained {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
 }
 
 .section {

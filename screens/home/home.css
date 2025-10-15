@@ -9,9 +9,119 @@
 /* Hero Section */
 .home-hero {
   position: relative;
-  background: linear-gradient(135deg, rgba(14, 58, 138, 0.03) 0%, rgba(108, 99, 255, 0.03) 100%);
+  background: linear-gradient(135deg, #0E3A8A 0%, #6C63FF 100%);  /* Blue to Violet gradient */
   padding: 6rem 0 4rem;
   overflow: hidden;
+}
+
+/* Animated Background Elements */
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(14, 58, 138, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(108, 99, 255, 0.2) 0%, transparent 50%);
+  animation: gradientShift 15s ease-in-out infinite;
+}
+
+.home-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px, 80px 80px;
+  animation: floatingDots 20s linear infinite;
+}
+
+/* Floating Particles Animation */
+@keyframes floatingDots {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+  }
+}
+
+/* Gradient Shift Animation */
+@keyframes gradientShift {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* Additional Animated Elements */
+.home-hero .container::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.home-hero .container::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 60px;
+  height: 60px;
+  background: rgba(108, 99, 255, 0.2);
+  border-radius: 20px;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+/* Floating Elements Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Subtle Wave Animation */
+.home-hero {
+  background: 
+    linear-gradient(135deg, #0E3A8A 0%, #6C63FF 100%),
+    radial-gradient(circle at 30% 70%, rgba(255, 211, 92, 0.1) 0%, transparent 50%);
+  background-size: 100% 100%, 200% 200%;
+  animation: waveMotion 12s ease-in-out infinite;
+  will-change: background-position; /* Optimize for animations */
+}
+
+@keyframes waveMotion {
+  0%, 100% {
+    background-position: 0% 50%, 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%, 100% 100%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -20,23 +130,57 @@
   }
 }
 
+/* Mobile Animation Optimization */
+@media (max-width: 767px) {
+  .home-hero .container::before,
+  .home-hero .container::after {
+    display: none; /* Hide floating elements on mobile for better performance */
+  }
+  
+  .home-hero::before,
+  .home-hero::after {
+    animation-duration: 25s; /* Slower animations on mobile */
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .home-hero,
+  .home-hero::before,
+  .home-hero::after,
+  .home-hero .container::before,
+  .home-hero .container::after {
+    animation: none !important;
+  }
+}
+
 .home-hero__content {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   text-align: center;
+  position: relative;
+  z-index: 10; /* Ensure content stays above animations */
+  padding: 0 2rem;
+}
+
+/* Mobile: Remove padding for full screen usage */
+@media (max-width: 768px) {
+  .home-hero__content {
+    padding: 0 2px;
+  }
 }
 
 .home-hero__headline {
   font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 700;
-  color: var(--color-dark);
+  color: #ffffff;  /* White on gradient */
   margin-bottom: 1.5rem;
   line-height: 1.1;
 }
 
 .home-hero__subheadline {
   font-size: clamp(1.125rem, 2vw, 1.375rem);
-  color: #4b5563;
+  color: rgba(255, 255, 255, 0.95);  /* White on gradient */
   margin-bottom: 2.5rem;
   line-height: 1.6;
 }
@@ -57,10 +201,10 @@
 
 /* Credibility Row */
 .home-credibility {
-  background: white;
+  background: #F5F5F5;  /* Cloud Silver */
   padding: 2rem 0;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid rgba(14, 58, 138, 0.2);
+  border-bottom: 1px solid rgba(14, 58, 138, 0.2);
 }
 
 .home-credibility__grid {
@@ -96,7 +240,7 @@
 .home-credibility__text {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--color-dark);
+  color: #0E0E10;  /* Midnight Black */
 }
 
 /* Services Section */
@@ -110,6 +254,14 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+}
+
+/* Mobile: Remove gaps and margins for full screen usage */
+@media (max-width: 768px) {
+  .home-services__grid {
+    gap: 0;
+    margin: 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -143,6 +295,14 @@
   margin-bottom: 3rem;
 }
 
+/* Mobile: Remove gaps and margins for full screen usage */
+@media (max-width: 768px) {
+  .home-divisions__grid {
+    gap: 0;
+    margin: 0;
+  }
+}
+
 @media (min-width: 640px) {
   .home-divisions__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -161,6 +321,18 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   transition: all 0.3s ease;
+}
+
+/* Mobile: Remove margins and make full width */
+@media (max-width: 768px) {
+  .home-division {
+    margin: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
 }
 
 .home-division:hover {
@@ -199,6 +371,14 @@
   gap: 2rem;
 }
 
+/* Mobile: Remove gaps and margins for full screen usage */
+@media (max-width: 768px) {
+  .home-featured__grid {
+    gap: 0;
+    margin: 0;
+  }
+}
+
 @media (min-width: 640px) {
   .home-featured__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -222,15 +402,23 @@
 
 /* CTA Band */
 .home-cta {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, #0E3A8A 0%, #6C63FF 100%);  /* Blue to Violet gradient */
   color: white;
   padding: 4rem 0;
   text-align: center;
 }
 
 .home-cta__content {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 2rem;
+}
+
+/* Mobile: Remove padding for full screen usage */
+@media (max-width: 768px) {
+  .home-cta__content {
+    padding: 0 2px;
+  }
 }
 
 .home-cta__title {

@@ -112,6 +112,33 @@
 .sidebar__footer {
   padding: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar__user {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar__user-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+}
+
+.sidebar__user-email {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .sidebar__exit {
@@ -130,43 +157,216 @@
   color: white;
 }
 
+.sidebar__logout {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-size: 0.9375rem;
+}
+
+.sidebar__logout:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+/* Mobile Menu Toggle Button */
+.sidebar__mobile-toggle {
+  display: none !important; /* Hidden by default on desktop */
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__mobile-toggle:hover {
+  background: #0d2f73;
+  transform: translateY(-1px);
+}
+
+/* Hamburger Icon */
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 20px;
+  height: 16px;
+  gap: 3px;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Overlay */
+.sidebar__overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(2px);
+}
+
+/* Mobile Close Button */
+.sidebar__close {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.sidebar__close:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
 /* Responsive */
 @media (max-width: 1023px) {
+  .sidebar__mobile-toggle {
+    display: flex !important; /* Show only on tablet/mobile */
+  }
+
   .sidebar {
-    width: 200px;
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100vh;
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar--mobile-open {
+    left: 0;
+  }
+
+  .sidebar__overlay {
+    display: block;
+  }
+
+  .sidebar__close {
+    display: block;
   }
 
   .sidebar__header {
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem 1rem 3rem;
   }
 
-  .sidebar__link {
-    padding: 0.75rem 1rem;
+  .sidebar__nav {
+    padding: 0 1rem;
   }
 
-  .sidebar__label {
-    font-size: 0.875rem;
+  .sidebar__footer {
+    padding: 1rem;
+  }
+
+  /* Adjust main content for mobile */
+  .admin-main {
+    margin-left: 0;
+    padding-top: 4rem;
+    /* Space for mobile toggle button */
   }
 }
 
 @media (max-width: 767px) {
   .sidebar {
     width: 100%;
-    height: auto;
-    position: relative;
-    display: none; /* Hide admin sidebar on mobile for non-admin pages */
+    left: -100%;
   }
 
-  .sidebar__nav {
-    padding: 1rem 0;
+  .sidebar--mobile-open {
+    left: 0;
   }
 
-  /* Only show admin sidebar on admin pages */
-  .admin-layout .sidebar {
-    display: flex;
+  .admin-main {
+    padding-top: 3.5rem;
+  }
+
+  .sidebar__mobile-toggle {
+    top: 0.75rem;
+    left: 0.75rem;
+    width: 44px;
+    height: 44px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hamburger-icon {
+    width: 25px;
+    height: 20px;
+    align-items: center;
+  }
+
+  .hamburger-line {
+    height: 3px;
+    background-color: white;
   }
 }
 
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+  }
 
+  .sidebar__header {
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  }
 
+  .sidebar__nav {
+    padding: 0 0.75rem;
+  }
 
+  .sidebar__footer {
+    padding: 0.75rem;
+  }
+
+  .admin-main {
+    padding-top: 3rem;
+  }
+
+  .sidebar__mobile-toggle {
+    width: 40px;
+    height: 40px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}

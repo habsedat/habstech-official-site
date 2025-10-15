@@ -3,6 +3,8 @@
  * Divisions Page Screen
  */
 
+'use client';
+
 import './divisions.css';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 

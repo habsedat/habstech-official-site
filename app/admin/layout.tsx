@@ -5,6 +5,7 @@
 
 import { Metadata } from 'next';
 import Sidebar from '@/components/admin/sidebar';
+import ProtectedRoute from '@/components/admin/protected-route';
 import '@/styles/admin.css';
 
 export const metadata: Metadata = {
@@ -22,14 +23,30 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="admin-layout">
-      <Sidebar />
-      <div className="admin-main">
-        {children}
+    <ProtectedRoute>
+      <div className="admin-layout">
+        <Sidebar />
+        <div className="admin-main">
+          <div className="admin-content">
+            {children}
+          </div>
+          <footer className="admin-footer">
+            <div className="admin-footer__content">
+              <p>&copy; {new Date().getFullYear()} Habs Technologies Group. All rights reserved.</p>
+              <p>Admin Dashboard</p>
+            </div>
+          </footer>
+        </div>
       </div>
-    </div>
+    </ProtectedRoute>
   );
 }
+
+
+
+
+
+
 
 
 

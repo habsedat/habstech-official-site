@@ -3,9 +3,9 @@
  * Case Studies Page Screen
  */
 
-import Link from 'next/link';
+'use client';
+
 import './case-studies.css';
-import Button from '@/components/ui/button';
 
 export default function CaseStudiesPage() {
   return (
@@ -32,17 +32,21 @@ export default function CaseStudiesPage() {
             <p className="case-studies-empty__text">
               In the meantime, we'd love to discuss how we can help with your project.
             </p>
-            <Link href="/application">
-              <Button variant="primary" size="lg">
-                Start Your Project
-              </Button>
-            </Link>
+            <a 
+              href="/application"
+              className="button button--primary button--lg"
+            >
+              Start Your Project
+            </a>
           </div>
         </div>
       </section>
     </div>
   );
 }
+
+
+
 
 
 

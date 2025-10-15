@@ -5,11 +5,9 @@
 
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import './navigation.css';
 import clsx from 'clsx';
-import Button from '../ui/button';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -21,13 +19,60 @@ const navLinks = [
 ];
 
 export default function Navigation({ className, onLinkClick }) {
-  const pathname = usePathname();
+  const [currentPath, setCurrentPath] = useState('/');
 
+  // Update path on mount and when it changes
+  useEffect(() => {
+    const updatePath = () => {
+      let path = window.location.pathname;
+      
+      // Handle static export routing - remove .html extension if present
+      if (path.endsWith('.html')) {
+        path = path.replace('.html', '');
+      }
+      
+      // Handle root path
+      if (path === '' || path === '/') {
+        path = '/';
+      }
+      
+      setCurrentPath(path);
+    };
+    
+    // Initial path
+    updatePath();
+    
+    // Listen for navigation changes
+    window.addEventListener('popstate', updatePath);
+    
+    // Listen for hash changes (for single-page navigation)
+    window.addEventListener('hashchange', updatePath);
+    
+    return () => {
+      window.removeEventListener('popstate', updatePath);
+      window.removeEventListener('hashchange', updatePath);
+    };
+  }, []);
+
+  // Function to check if current page matches the link
   const isActive = (href) => {
-    if (href === '/') {
-      return pathname === '/';
+    // Normalize current path
+    let normalizedCurrentPath = currentPath;
+    if (normalizedCurrentPath === '/' || normalizedCurrentPath === '') {
+      normalizedCurrentPath = '/';
+    } else {
+      normalizedCurrentPath = normalizedCurrentPath.replace(/\/$/, '');
     }
-    return pathname.startsWith(href);
+    
+    // Normalize href
+    let normalizedHref = href;
+    if (normalizedHref === '/') {
+      normalizedHref = '/';
+    } else {
+      normalizedHref = normalizedHref.replace(/\/$/, '');
+    }
+    
+    return normalizedCurrentPath === normalizedHref;
   };
 
   return (
@@ -35,44 +80,35 @@ export default function Navigation({ className, onLinkClick }) {
       <ul className="navigation__list">
         {navLinks.map((link) => (
           <li key={link.href} className="navigation__item">
-            <Link
+            <a
               href={link.href}
               className={clsx(
                 'navigation__link',
                 isActive(link.href) && 'navigation__link--active'
               )}
-              onClick={() => {
+              onClick={(e) => {
+                // Close mobile menu if open
                 if (onLinkClick) {
                   onLinkClick();
                 }
+                
+                // Update the current path immediately for better UX
+                setCurrentPath(link.href);
               }}
             >
               {link.label}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>
 
       <div className="navigation__cta">
-        <Link 
+        <a 
           href="/application" 
-          onClick={() => {
-            if (onLinkClick) {
-              onLinkClick();
-            }
-          }}
-          className={clsx(
-            'navigation__cta-link',
-            isActive('/application') && 'navigation__cta-link--active'
-          )}
+          className="navigation__cta-link button button--primary button--sm"
         >
-          <Button 
-            variant={isActive('/application') ? 'secondary' : 'primary'} 
-            size="sm"
-          >
-            Start a Project
-          </Button>
-        </Link>
+          Start a Project
+        </a>
       </div>
     </nav>
   );

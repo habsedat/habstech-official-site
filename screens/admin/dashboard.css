@@ -8,6 +8,13 @@
   gap: 1.5rem;
 }
 
+/* Mobile: Set gaps to 2px for full screen usage */
+@media (max-width: 768px) {
+  .dashboard-actions {
+    gap: 2px;
+  }
+}
+
 @media (min-width: 640px) {
   .dashboard-actions {
     grid-template-columns: repeat(2, 1fr);
@@ -47,6 +54,13 @@
   color: #6b7280;
   font-style: italic;
 }
+
+
+
+
+
+
+
 
 
 

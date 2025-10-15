@@ -3,7 +3,6 @@
  * Home Page Screen
  */
 
-import Link from 'next/link';
 import './home.css';
 import Button from '@/components/ui/button';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
@@ -22,16 +21,18 @@ export default function HomePage() {
               From concept to production, we craft intelligent products, websites, and applications your users love—and your business can scale.
             </p>
             <div className="home-hero__actions">
-              <Link href="/application">
-                <Button variant="primary" size="lg">
-                  Start a Project
-                </Button>
-              </Link>
-              <Link href="/services">
-                <Button variant="secondary" size="lg">
-                  Explore Services
-                </Button>
-              </Link>
+              <a 
+                href="/application"
+                className="button button--primary button--lg"
+              >
+                Start a Project
+              </a>
+              <a 
+                href="/services"
+                className="button button--secondary button--lg"
+              >
+                Explore Services
+              </a>
             </div>
           </div>
         </div>
@@ -121,11 +122,12 @@ export default function HomePage() {
           </div>
 
           <div className="home-divisions__cta">
-            <Link href="/divisions">
-              <Button variant="ghost">
-                Learn More About Our Divisions →
-              </Button>
-            </Link>
+            <a 
+              href="/divisions"
+              className="button button--ghost"
+            >
+              Learn More About Our Divisions →
+            </a>
           </div>
         </div>
       </section>
@@ -159,11 +161,12 @@ export default function HomePage() {
             <p className="home-cta__subtitle">
               Let's scope your project in 24 hours.
             </p>
-            <Link href="/application">
-              <Button variant="accent" size="lg">
-                Start a Project
-              </Button>
-            </Link>
+            <a 
+              href="/application"
+              className="button button--accent button--lg"
+            >
+              Start a Project
+            </a>
           </div>
         </div>
       </section>

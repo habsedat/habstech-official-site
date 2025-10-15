@@ -1,0 +1,30 @@
+
+> habs-technologies@0.1.0 build
+> next build
+
+ ÔÜá Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\kabia\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * C:\Users\kabia\Desktop\JHK\HABS TECHNOLOGIES GROUP\habs-technologies\package-lock.json
+
+   Ôû▓ Next.js 15.5.4
+   - Environments: .env.local, .env.production
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully in 3.8s
+   Linting and checking validity of types ...
+Failed to compile.
+
+./app/about/page.tsx:11:3
+Type error: Type 'string' is not assignable to type 'null | undefined'.
+
+   9 |
+  10 | export const metadata: Metadata = generateSEO({
+> 11 |   title: 'About Us',
+     |   ^
+  12 |   description: 'We exist to turn imagination into useful technologyÔÇöfrom Sierra Leone to the world. Learn about our mission, vision, and values.',
+  13 |   url: '/about',
+  14 | });
+Next.js build worker exited with code: 1 and signal: null

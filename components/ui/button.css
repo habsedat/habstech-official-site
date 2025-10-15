@@ -31,13 +31,15 @@
 
 /* Variants */
 .button--primary {
-  background: var(--color-primary);
-  color: white;
+  background: #FFD35C;  /* Bright Golden Yellow - CTA */
+  color: #0E0E10;       /* Midnight Black text */
+  font-weight: 700;
 }
 
 .button--primary:hover:not(:disabled) {
-  background: #0a2d6e;
-  box-shadow: var(--shadow-md);
+  background: #ffdd70;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 211, 92, 0.4);
 }
 
 .button--secondary {
@@ -52,13 +54,14 @@
 }
 
 .button--accent {
-  background: var(--color-accent-a);
+  background: var(--color-accent-a);  /* Deep Creative Violet */
   color: white;
 }
 
 .button--accent:hover:not(:disabled) {
-  background: #5952e6;
-  box-shadow: var(--shadow-md);
+  background: #7c74ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
 }
 
 .button--ghost {

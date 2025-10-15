@@ -3,15 +3,33 @@
  */
 
 .footer {
-  background: var(--color-dark);
+  background: linear-gradient(135deg, #0E3A8A 0%, #6C63FF 100%);  /* Blue to Violet gradient */
   color: white;
   padding: 4rem 0 2rem;
-  margin-top: 4rem;
+  margin-top: 0;
+  border-top: 3px solid #FFD35C;  /* Bright Golden Yellow accent */
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+  right: 0;
+  clear: both;
 }
 
 .footer__container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobile: Minimal margins for full screen usage */
+@media (max-width: 768px) {
+  .footer__container {
+    padding: 0 2px;
+  }
 }
 
 .footer__top {

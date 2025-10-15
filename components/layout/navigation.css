@@ -37,34 +37,35 @@
 }
 
 .navigation__link--active {
-  color: #6C63FF; /* Deep Creative Violet */
-  background: rgba(108, 99, 255, 0.1);
+  color: white; /* White text on blue background */
+  background: #0E3A8A; /* Electric Tech Blue - Active state */
+  font-weight: 600;
 }
 
 .navigation__cta {
   margin-left: 0.25rem;
 }
 
-.navigation__cta button {
-  padding: 0.25rem 0.75rem !important;
-  font-size: 0.8rem !important;
-  height: auto !important;
-  line-height: 1.2 !important;
-  border-radius: var(--radius-sm) !important;
-  font-weight: 500 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
 .navigation__cta-link {
   text-decoration: none;
   display: inline-block;
   transition: all 0.2s ease;
+  background: #FFD35C !important;  /* Bright Golden Yellow - LOCKED */
+  color: #0E0E10 !important;       /* Midnight Black text - LOCKED */
+  font-weight: 700 !important;
 }
 
-.navigation__cta-link--active {
-  /* Active state styling - button will change variant to secondary */
+.navigation__cta-link:hover {
+  background: #ffdd70 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 211, 92, 0.4);
+}
+
+.navigation__cta-link:active,
+.navigation__cta-link:focus,
+.navigation__cta-link:visited {
+  background: #FFD35C !important;  /* Keep yellow even when active/focus/visited */
+  color: #0E0E10 !important;
 }
 
 /* Mobile styles */
@@ -112,8 +113,8 @@
   }
 
   .navigation__link--active {
-    background: rgba(108, 99, 255, 0.1); /* Deep Creative Violet active */
-    color: var(--color-accent-a);
+    background: #0E3A8A; /* Electric Tech Blue - Active state */
+    color: white; /* White text on blue background */
     font-weight: 600;
   }
 
@@ -132,21 +133,4 @@
     margin-top: 0;
     padding: 1px 8px;
   }
-
-  .navigation__cta button {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    background: var(--color-primary); /* Electric Tech Blue */
-    border-color: var(--color-primary);
-    height: auto;
-  }
-
-  .navigation__cta button:hover {
-    background: var(--color-accent-a); /* Deep Creative Violet on hover */
-    border-color: var(--color-accent-a);
-  }
 }
-
-

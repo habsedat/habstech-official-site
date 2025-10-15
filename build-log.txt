@@ -1,0 +1,27 @@
+ ÔÜá Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\kabia\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * C:\Users\kabia\Desktop\JHK\HABS TECHNOLOGIES GROUP\habs-technologies\package-lock.json
+
+   Ôû▓ Next.js 15.5.4
+   - Environments: .env.local, .env.production
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully in 3.3s
+   Linting and checking validity of types ...
+Failed to compile.
+
+./app/about/page.tsx:10:47
+Type error: Argument of type '{ title: string; description: string; url: string; }' is not assignable to parameter of type '{ title: any; description: any; image: any; url: any; keywords?: never[] | undefined; }'.
+  Property 'image' is missing in type '{ title: string; description: string; url: string; }' but required in type '{ title: any; description: any; image: any; url: any; keywords?: never[] | undefined; }'.
+
+   8 | import { generateMetadata as generateSEO } from '@/lib/seo';
+   9 |
+> 10 | export const metadata: Metadata = generateSEO({
+     |                                               ^
+  11 |   title: 'About Us',
+  12 |   description: 'We exist to turn imagination into useful technologyÔÇöfrom Sierra Leone to the world. Learn about our mission, vision, and values.',
+  13 |   url: '/about',
+Next.js build worker exited with code: 1 and signal: null

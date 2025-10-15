@@ -66,16 +66,27 @@ export default function Header() {
     <header className={clsx('header', isScrolled && 'header--scrolled')}>
       <div className="header__container container">
         <Link href="/" className="header__logo">
-          <img 
-            src="/logo.png" 
-            alt="Habs Technologies Group" 
-            className="header__logo-image"
-            style={{
-              height: '40px',
-              width: 'auto',
-              objectFit: 'contain'
-            }}
-          />
+          <div className="header__logo-container">
+            {/* Icon Logo Section */}
+            <div className="header__logo-icon">
+              <img 
+                src="/logo.png" 
+                alt="HABS TECHNOLOGIES GROUP" 
+                className="header__logo-image"
+                style={{
+                  height: '40px',
+                  width: 'auto',
+                  objectFit: 'contain'
+                }}
+              />
+            </div>
+            
+            {/* Text Logo Section */}
+            <div className="header__logo-text-section">
+              <div className="header__logo-text">HABS TECHNOLOGIES GROUP</div>
+              <div className="header__logo-tagline">Innovation Through Technology</div>
+            </div>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
