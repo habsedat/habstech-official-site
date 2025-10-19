@@ -36,6 +36,14 @@
         "destination": "/divisions.html"
       },
       {
+        "source": "/news",
+        "destination": "/news.html"
+      },
+      {
+        "source": "/test-images",
+        "destination": "/test-images.html"
+      },
+      {
         "source": "/admin/dashboard",
         "destination": "/admin/dashboard.html"
       },
@@ -58,6 +66,14 @@
       {
         "source": "/admin/media",
         "destination": "/admin/media.html"
+      },
+      {
+        "source": "/admin/image-assignment",
+        "destination": "/admin/image-assignment.html"
+      },
+      {
+        "source": "/admin/news",
+        "destination": "/admin/news.html"
       },
       {
         "source": "/admin/users",

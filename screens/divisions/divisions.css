@@ -38,6 +38,43 @@
   background: white;
 }
 
+/* Division Icons */
+.divisions-card__icon {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f8fafc;
+  aspect-ratio: 16/9;
+}
+
+.divisions-card__icon img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.divisions-card:hover .divisions-card__icon img {
+  transform: scale(1.05);
+}
+
+.divisions-card__icon span {
+  font-size: 4rem;
+  color: #6b7280;
+}
+
 .divisions-list__grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -53,23 +90,131 @@
   }
 }
 
-/* Mobile: Remove gaps for full screen usage */
-@media (max-width: 768px) {
+/* Ultra Small Mobile: Single column, minimal spacing */
+@media (max-width: 359px) {
   .divisions-list__grid {
-    gap: 0;
+    display: block;
+    gap: 1rem;
     max-width: 100%;
+    padding: 0 5px;
+  }
+  
+  .divisions-card {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
   }
 }
 
-@media (min-width: 768px) {
+/* Small Mobile: Single column, standard spacing */
+@media (min-width: 360px) and (max-width: 479px) {
   .divisions-list__grid {
+    display: block;
+    gap: 1.25rem;
+    max-width: 100%;
+    padding: 0 5px;
+  }
+  
+  .divisions-card {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* Mobile: Single column, good spacing */
+@media (min-width: 480px) and (max-width: 639px) {
+  .divisions-list__grid {
+    display: block;
+    gap: 1.5rem;
+    max-width: 100%;
+    padding: 0 5px;
+  }
+  
+  .divisions-card {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Large Mobile: Single column, professional spacing */
+@media (min-width: 640px) and (max-width: 767px) {
+  .divisions-list__grid {
+    display: block;
+    gap: 1.75rem;
+    max-width: 100%;
+    padding: 0 5px;
+  }
+  
+  .divisions-card {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.75rem;
+  }
+}
+
+/* Tablet: Two columns (inline grid) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .divisions-list__grid {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 0 5px;
+    justify-items: stretch;
+  }
+  
+  .divisions-card {
+    display: flex;
+    flex-direction: column;
   }
 }
 
-@media (min-width: 1024px) {
+/* Small Desktop: Three columns (inline grid) */
+@media (min-width: 1024px) and (max-width: 1279px) {
   .divisions-list__grid {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0 5px;
+    justify-items: stretch;
+  }
+  
+  .divisions-card {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Desktop: Three columns with more spacing (inline grid) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .divisions-list__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    padding: 0 5px;
+    justify-items: stretch;
+  }
+  
+  .divisions-card {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Large Desktop: Three columns with maximum spacing (inline grid) */
+@media (min-width: 1440px) {
+  .divisions-list__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    padding: 0 5px;
+    justify-items: stretch;
+  }
+  
+  .divisions-card {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -77,6 +222,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  border: none;
+  border-radius: 16px;
+  overflow: visible;
+  overflow-x: visible;
+  overflow-y: visible;
+  padding: 0;
 }
 
 /* Desktop: Professional card styling */
@@ -86,26 +237,142 @@
   }
 }
 
-/* Mobile: Remove margins and make full width */
-@media (max-width: 768px) {
+/* Ultra Small Mobile: Compact cards */
+@media (max-width: 359px) {
   .divisions-card {
-    margin: 0;
+    margin: 0 auto;
+    border: none;
     border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    box-shadow: none;
+    overflow: visible;
+    overflow-x: visible;
+    overflow-y: visible;
+    max-width: 320px;
+    width: 100%;
+  }
+  
+  .divisions-card__icon {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    margin: 0 auto 1rem auto;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  .divisions-card__icon img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
   }
 }
 
-.divisions-card__icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+/* Small Mobile: Standard cards */
+@media (min-width: 360px) and (max-width: 479px) {
+  .divisions-card {
+    margin: 0 auto;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    overflow-x: visible;
+    overflow-y: visible;
+    max-width: 360px;
+    width: 100%;
+  }
+  
+  .divisions-card__icon {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    margin: 0 auto 1.25rem auto;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  .divisions-card__icon img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+  }
 }
+
+/* Mobile: Professional cards */
+@media (min-width: 480px) and (max-width: 639px) {
+  .divisions-card {
+    margin: 0 auto;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    overflow-x: visible;
+    overflow-y: visible;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .divisions-card__icon {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    margin: 0 auto 1.5rem auto;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  .divisions-card__icon img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+  }
+}
+
+/* Large Mobile: Enhanced cards */
+@media (min-width: 640px) and (max-width: 767px) {
+  .divisions-card {
+    margin: 0 auto;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    overflow-x: visible;
+    overflow-y: visible;
+    max-width: 450px;
+    width: 100%;
+  }
+  
+  .divisions-card__icon {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    margin: 0 auto 1.5rem auto;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  .divisions-card__icon img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+  }
+}
+
 
 .divisions-card__details {
   margin-top: 1rem;
+  padding: 0;
 }
 
 .divisions-card__label {
@@ -115,12 +382,14 @@
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  padding: 0;
 }
 
 .divisions-card__text {
   font-size: 0.9375rem;
   color: #6b7280;
   margin: 0;
+  padding: 0;
   line-height: 1.6;
 }
 

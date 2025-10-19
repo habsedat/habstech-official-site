@@ -9,13 +9,17 @@ import { useState } from 'react';
 import './topbar.css';
 import Button from '../ui/button';
 import Notifications from './notifications';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function Topbar({ title, subtitle }) {
-  const [user, setUser] = useState(null); // Will be populated with Firebase auth
+  const { user, logout } = useAuth();
 
   const handleLogout = async () => {
-    // Implement logout functionality
-    console.log('Logout');
+    try {
+      await logout();
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
 
   return (
@@ -29,8 +33,8 @@ export default function Topbar({ title, subtitle }) {
         <div className="topbar__actions">
           <Notifications />
           <div className="topbar__user">
-            <span className="topbar__user-name">Admin User</span>
-            <span className="topbar__user-role">Owner</span>
+            <span className="topbar__user-name">{user?.name || 'Admin User'}</span>
+            <span className="topbar__user-role">{user?.role || 'Admin'}</span>
           </div>
           <Button variant="ghost" size="sm" onClick={handleLogout}>
             Logout

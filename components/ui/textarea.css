@@ -14,6 +14,13 @@
   color: var(--color-dark);
 }
 
+/* Dark theme for admin pages */
+.admin-section .textarea-label,
+.user-manager .textarea-label,
+.permissions-manager .textarea-label {
+  color: #94a3b8;
+}
+
 .textarea-required {
   color: #dc2626;
   margin-left: 0.25rem;
@@ -33,18 +40,49 @@
   min-height: 100px;
 }
 
+/* Dark theme for admin pages */
+.admin-section .textarea,
+.user-manager .textarea,
+.permissions-manager .textarea {
+  color: #ffffff;
+  background: #334155;
+  border-color: #475569;
+}
+
 .textarea::placeholder {
   color: #9ca3af;
+}
+
+/* Dark theme placeholder for admin pages */
+.admin-section .textarea::placeholder,
+.user-manager .textarea::placeholder,
+.permissions-manager .textarea::placeholder {
+  color: #94a3b8;
 }
 
 .textarea:hover:not(:disabled) {
   border-color: var(--color-primary);
 }
 
+/* Dark theme hover for admin pages */
+.admin-section .textarea:hover:not(:disabled),
+.user-manager .textarea:hover:not(:disabled),
+.permissions-manager .textarea:hover:not(:disabled) {
+  border-color: #6c63ff;
+}
+
 .textarea:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(14, 58, 138, 0.1);
+}
+
+/* Dark theme focus for admin pages */
+.admin-section .textarea:focus,
+.user-manager .textarea:focus,
+.permissions-manager .textarea:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
 }
 
 .textarea:focus-visible {

@@ -59,13 +59,47 @@
   }
 }
 
-/* Mobile: Remove padding for full screen usage */
-@media (max-width: 768px) {
+/* Ultra Small Mobile: Compact form */
+@media (max-width: 359px) {
   .application-form {
-    padding: 2px;
+    padding: 1rem 0.25rem;
     max-width: 100%;
-    border-radius: 0;
-    box-shadow: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin: 0 0.25rem;
+  }
+}
+
+/* Small Mobile: Standard form */
+@media (min-width: 360px) and (max-width: 479px) {
+  .application-form {
+    padding: 1.5rem 0.5rem;
+    max-width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin: 0 0.5rem;
+  }
+}
+
+/* Mobile: Professional form */
+@media (min-width: 480px) and (max-width: 639px) {
+  .application-form {
+    padding: 2rem 0.75rem;
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin: 0 0.75rem;
+  }
+}
+
+/* Large Mobile: Enhanced form */
+@media (min-width: 640px) and (max-width: 767px) {
+  .application-form {
+    padding: 2.5rem 1rem;
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin: 0 1rem;
   }
 }
 
@@ -90,9 +124,39 @@
   gap: 1.5rem;
 }
 
-@media (min-width: 768px) {
+/* Tablet: Two columns */
+@media (min-width: 768px) and (max-width: 1023px) {
   .application-form__row {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .application-form {
+    padding: 3rem 1rem;
+    margin: 0 1rem;
+  }
+}
+
+/* Small Desktop: Two columns with more spacing */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .application-form__row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .application-form {
+    padding: 3rem 1.5rem;
+    margin: 0 1.5rem;
+  }
+}
+
+/* Desktop: Two columns with maximum spacing */
+@media (min-width: 1280px) {
+  .application-form__row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .application-form {
+    padding: 3rem 2rem;
+    margin: 0 2rem;
   }
 }
 

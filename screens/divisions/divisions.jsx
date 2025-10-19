@@ -7,6 +7,7 @@
 
 import './divisions.css';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import DynamicImage from '@/components/dynamic-image';
 
 export default function DivisionsPage() {
   return (
@@ -28,7 +29,15 @@ export default function DivisionsPage() {
             {divisions.map((division) => (
               <Card key={division.name} hover padding="lg" className="divisions-card">
                 <CardHeader>
-                  <div className="divisions-card__icon">{division.icon}</div>
+                  <div className="divisions-card__icon">
+                    <DynamicImage 
+                      sectionId={division.imageId} 
+                      page="divisions" 
+                      alt={`${division.name} Image`}
+                      size="medium"
+                      fallback={<span>{division.icon}</span>}
+                    />
+                  </div>
                   <CardTitle>{division.name}</CardTitle>
                   <CardDescription>{division.focus}</CardDescription>
                 </CardHeader>
@@ -53,36 +62,42 @@ const divisions = [
     focus: 'Creator-grade tools for AI image, audio & video generation',
     example: 'Media generation, creative automation, content production',
     icon: '🎨',
+    imageId: 'division-ai-studio',
   },
   {
     name: 'Habs AI Forge',
     focus: 'Custom AI pipelines & business automation',
     example: 'Business AI solutions, workflow automation, intelligent systems',
     icon: '⚙️',
+    imageId: 'division-ai-forge',
   },
   {
     name: 'Habs Media',
     focus: 'Content technology & template systems',
     example: 'Branding assets, media management, production tools',
     icon: '📸',
+    imageId: 'division-media',
   },
   {
     name: 'Habs Play',
     focus: 'Interactive experiments & digital concepts',
     example: 'Games, interactive experiences, experimental applications',
     icon: '🎮',
+    imageId: 'division-play',
   },
   {
     name: 'Habs Motion',
     focus: 'Video and animation production systems',
     example: 'Video editors, animation tools, post-production workflows',
     icon: '🎬',
+    imageId: 'division-motion',
   },
   {
     name: 'Habs Connect',
     focus: 'Payments, integrations & infrastructure',
     example: 'Payment gateways, authentication, analytics, cloud storage',
     icon: '🔗',
+    imageId: 'division-connect',
   },
 ];
 

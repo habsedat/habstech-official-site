@@ -78,6 +78,164 @@ body {
 }
 
 /* ============================================
+   COMPREHENSIVE RESPONSIVE SYSTEM
+   ============================================ */
+
+/* Ultra Small Mobile (248px - 359px) */
+@media (max-width: 359px) {
+  body {
+    padding-top: 60px;
+    font-size: 0.875rem;
+  }
+  
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.125rem; }
+  
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Small Mobile (360px - 479px) */
+@media (min-width: 360px) and (max-width: 479px) {
+  body {
+    padding-top: 65px;
+    font-size: 0.9rem;
+  }
+  
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.35rem; }
+  h3 { font-size: 1.2rem; }
+  
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Mobile (480px - 639px) */
+@media (min-width: 480px) and (max-width: 639px) {
+  body {
+    padding-top: 70px;
+    font-size: 0.95rem;
+  }
+  
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.25rem; }
+  
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Large Mobile (640px - 767px) */
+@media (min-width: 640px) and (max-width: 767px) {
+  body {
+    padding-top: 70px;
+    font-size: 1rem;
+  }
+  
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+  
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    padding-top: 75px;
+    font-size: 1rem;
+  }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.4rem; }
+  
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Small Desktop (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  body {
+    padding-top: 0;
+    font-size: 1rem;
+  }
+  
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.875rem; }
+  h3 { font-size: 1.5rem; }
+  
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Desktop (1280px - 1439px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  body {
+    padding-top: 0;
+    font-size: 1rem;
+  }
+  
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.625rem; }
+  
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Large Desktop (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  body {
+    padding-top: 0;
+    font-size: 1.125rem;
+  }
+  
+  h1 { font-size: 2.75rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.75rem; }
+  
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Ultra Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  body {
+    padding-top: 0;
+    font-size: 1.25rem;
+  }
+  
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.5rem; }
+  h3 { font-size: 2rem; }
+  
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 1600px;
+  }
+}
+
+/* ============================================
    TYPOGRAPHY SYSTEM
    ============================================ */
 
@@ -116,39 +274,13 @@ h6 {
   font-weight: 600;
 }
 
-/* Desktop heading sizes */
-@media (min-width: 768px) {
-  h1 {
-    font-size: 2.5rem;  /* Desktop: ~40px */
-  }
-  
-  h2 {
-    font-size: 2rem;    /* Desktop: ~32px */
-  }
-  
-  h3 {
-    font-size: 1.5rem;  /* Desktop: ~24px */
-  }
-  
-  h4 {
-    font-size: 1.25rem;
-  }
-}
-
 p, li, span {
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.6;
-  font-size: 0.95rem;  /* Mobile: ~15px */
+  font-size: 0.95rem;  /* Base mobile size */
   margin-bottom: 1rem;
   color: #ffffff;  /* White text on blue background */
-}
-
-/* Desktop body text size */
-@media (min-width: 768px) {
-  p, li, span {
-    font-size: 1rem;    /* Desktop: ~16px */
-  }
 }
 
 input, button, textarea, select {

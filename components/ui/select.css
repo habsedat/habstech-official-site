@@ -15,7 +15,9 @@
 }
 
 /* Dark theme for admin pages */
-.admin-section .select-label {
+.admin-section .select-label,
+.user-manager .select-label,
+.permissions-manager .select-label {
   color: #94a3b8;
 }
 
@@ -43,20 +45,37 @@
 }
 
 /* Dark theme for admin pages */
-.admin-section .select {
+.admin-section .select,
+.user-manager .select,
+.permissions-manager .select {
   color: #ffffff;
-  background: #0f172a;
-  border-color: #334155;
+  background: #334155;
+  border-color: #475569;
 }
 
 .select:hover:not(:disabled) {
   border-color: var(--color-primary);
 }
 
+/* Dark theme hover for admin pages */
+.admin-section .select:hover:not(:disabled),
+.user-manager .select:hover:not(:disabled),
+.permissions-manager .select:hover:not(:disabled) {
+  border-color: #6c63ff;
+}
+
 .select:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(14, 58, 138, 0.1);
+}
+
+/* Dark theme focus for admin pages */
+.admin-section .select:focus,
+.user-manager .select:focus,
+.permissions-manager .select:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
 }
 
 .select:focus-visible {
@@ -89,7 +108,9 @@
 }
 
 /* Dark theme for admin pages */
-.admin-section .select-icon {
+.admin-section .select-icon,
+.user-manager .select-icon,
+.permissions-manager .select-icon {
   color: #94a3b8;
 }
 

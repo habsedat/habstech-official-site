@@ -12,20 +12,20 @@ service firebase.storage {
       return request.auth != null;
     }
     
-    function isOwner() {
+    function isSuperAdmin() {
       return isAuthenticated() && 
-             firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'owner';
+             firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'super_admin';
     }
     
     function isAdmin() {
       return isAuthenticated() && 
-             (firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'owner' ||
+             (firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'super_admin' ||
               firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin');
     }
     
     function isEditor() {
       return isAuthenticated() && 
-             (firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'owner' ||
+             (firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'super_admin' ||
               firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
               firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'editor');
     }
@@ -34,20 +34,40 @@ service firebase.storage {
       return request.resource.size < 10 * 1024 * 1024; // 10MB
     }
     
-    function isValidFileSize() {
-      return request.resource.size < 50 * 1024 * 1024; // 50MB
+    // NO RESTRICTIONS for videos - accept any size, any length
+    function isValidVideoSize() {
+      return true; // No size limit for videos
     }
     
-    // Public files - anyone can read, editors can write
+    function isValidFileSize() {
+      return true; // No size limit for general files
+    }
+    
+    // Public files - anyone can read, authenticated users can write (for development)
     match /public/{allPaths=**} {
       allow read: if true;
-      allow write: if isEditor() && isValidImageSize();
+      allow write: if isAuthenticated() && isValidImageSize();
     }
     
-    // Media files - anyone can read, editors can write
+    // Media files - anyone can read, ANY authenticated user can write (NO RESTRICTIONS)
     match /media/{allPaths=**} {
       allow read: if true;
-      allow write: if isEditor() && isValidImageSize();
+      allow write: if isAuthenticated(); // No size limits, no role restrictions
+      allow delete: if isAuthenticated();
+    }
+    
+    // Image files - anyone can read, admins can write
+    match /media/images/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidImageSize();
+      allow delete: if isAdmin();
+    }
+    
+    // Video files - anyone can read, ANY authenticated user can write (NO RESTRICTIONS)
+    match /media/videos/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAuthenticated(); // No size limits, no role restrictions
+      allow delete: if isAuthenticated();
     }
     
     // Application uploads - public can create, admins can read
@@ -57,12 +77,14 @@ service firebase.storage {
       allow update, delete: if isAdmin();
     }
     
-    // System files - owner only
+    // System files - super admin only
     match /system/{allPaths=**} {
-      allow read, write: if isOwner();
+      allow read, write: if isSuperAdmin();
     }
   }
 }
+
+
 
 
 

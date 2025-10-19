@@ -62,18 +62,66 @@
   }
 }
 
-/* Mobile: Remove gaps and padding for full screen usage */
-@media (max-width: 768px) {
+/* Ultra Small Mobile: Single column, minimal spacing */
+@media (max-width: 359px) {
   .about-mission-vision__grid {
-    gap: 0;
-    padding: 0 2px;
+    gap: 1.5rem;
+    padding: 0 0.25rem;
     max-width: 100%;
   }
 }
 
-@media (min-width: 768px) {
+/* Small Mobile: Single column, standard spacing */
+@media (min-width: 360px) and (max-width: 479px) {
+  .about-mission-vision__grid {
+    gap: 2rem;
+    padding: 0 0.5rem;
+    max-width: 100%;
+  }
+}
+
+/* Mobile: Single column, good spacing */
+@media (min-width: 480px) and (max-width: 639px) {
+  .about-mission-vision__grid {
+    gap: 2.5rem;
+    padding: 0 0.75rem;
+    max-width: 100%;
+  }
+}
+
+/* Large Mobile: Single column, professional spacing */
+@media (min-width: 640px) and (max-width: 767px) {
+  .about-mission-vision__grid {
+    gap: 3rem;
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+}
+
+/* Tablet: Two columns */
+@media (min-width: 768px) and (max-width: 1023px) {
   .about-mission-vision__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    padding: 0 1rem;
+  }
+}
+
+/* Small Desktop: Two columns with more spacing */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .about-mission-vision__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Desktop: Two columns with maximum spacing */
+@media (min-width: 1280px) {
+  .about-mission-vision__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+    padding: 0 2rem;
   }
 }
 

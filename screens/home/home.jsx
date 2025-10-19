@@ -6,12 +6,17 @@
 import './home.css';
 import Button from '@/components/ui/button';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import DynamicImage, { DynamicBackgroundImage } from '@/components/dynamic-image';
 
 export default function HomePage() {
   return (
     <div className="home">
       {/* Hero Section */}
-      <section className="home-hero">
+      <DynamicBackgroundImage 
+        sectionId="hero-bg" 
+        page="homepage" 
+        className="home-hero"
+      >
         <div className="container">
           <div className="home-hero__content">
             <h1 className="home-hero__headline">
@@ -36,7 +41,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </DynamicBackgroundImage>
 
       {/* Credibility Row */}
       <section className="home-credibility">
@@ -70,6 +75,15 @@ export default function HomePage() {
           <div className="home-services__grid">
             <Card hover padding="lg">
               <CardHeader>
+                <div className="home-services__icon">
+                  <DynamicImage 
+                    sectionId="service-ai" 
+                    page="homepage" 
+                    alt="AI Solutions Icon"
+                    size="medium"
+                    fallback={<span>🤖</span>}
+                  />
+                </div>
                 <CardTitle>AI Solutions</CardTitle>
               </CardHeader>
               <CardContent>
@@ -81,6 +95,15 @@ export default function HomePage() {
 
             <Card hover padding="lg">
               <CardHeader>
+                <div className="home-services__icon">
+                  <DynamicImage 
+                    sectionId="service-web" 
+                    page="homepage" 
+                    alt="Web Development Icon"
+                    size="medium"
+                    fallback={<span>🌐</span>}
+                  />
+                </div>
                 <CardTitle>Web & App Development</CardTitle>
               </CardHeader>
               <CardContent>
@@ -92,6 +115,15 @@ export default function HomePage() {
 
             <Card hover padding="lg">
               <CardHeader>
+                <div className="home-services__icon">
+                  <DynamicImage 
+                    sectionId="service-creative" 
+                    page="homepage" 
+                    alt="Creative Tech Icon"
+                    size="medium"
+                    fallback={<span>🎨</span>}
+                  />
+                </div>
                 <CardTitle>Creative Tech</CardTitle>
               </CardHeader>
               <CardContent>

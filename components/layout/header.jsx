@@ -28,7 +28,7 @@ export default function Header() {
   // Close mobile menu on resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setMobileMenuOpen(false);
       }
     };
@@ -99,52 +99,11 @@ export default function Header() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileMenuOpen}
-          style={{
-            background: mobileMenuOpen ? '#6C63FF' : '#0E3A8A', 
-            width: '32px', 
-            height: '32px', 
-            borderRadius: '4px', 
-            border: 'none', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            boxShadow: '0 1px 2px rgba(14, 58, 138, 0.1)',
-            position: 'relative',
-            zIndex: '60',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            padding: '1px'
-          }}
         >
-          <div className={clsx('hamburger', mobileMenuOpen && 'hamburger--active')} style={{
-            display: 'flex', 
-            flexDirection: 'column', 
-            justifyContent: 'space-between', 
-            width: '14px', 
-            height: '10px',
-            cursor: 'pointer'
-          }}>
-            <div className="hamburger__line" style={{
-              width: '100%', 
-              height: '1px', 
-              background: 'white', 
-              borderRadius: '1px',
-              transition: 'all 0.2s ease'
-            }}></div>
-            <div className="hamburger__line" style={{
-              width: '100%', 
-              height: '1px', 
-              background: 'white', 
-              borderRadius: '1px',
-              transition: 'all 0.2s ease'
-            }}></div>
-            <div className="hamburger__line" style={{
-              width: '100%', 
-              height: '1px', 
-              background: 'white', 
-              borderRadius: '1px',
-              transition: 'all 0.2s ease'
-            }}></div>
+          <div className={clsx('hamburger', mobileMenuOpen && 'hamburger--active')}>
+            <div className="hamburger__line"></div>
+            <div className="hamburger__line"></div>
+            <div className="hamburger__line"></div>
           </div>
         </button>
       </div>

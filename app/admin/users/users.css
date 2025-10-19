@@ -1,0 +1,67 @@
+/**
+ * HABS TECHNOLOGIES GROUP
+ * Users Page Styles
+ */
+
+.users-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+}
+
+.users-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  justify-content: center;
+}
+
+.users-tab:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+.users-tab--active {
+  background: #6c63ff;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.3);
+}
+
+.users-tab__icon {
+  font-size: 1.125rem;
+}
+
+.users-tab__label {
+  font-weight: 500;
+}
+
+.users-content {
+  min-height: 400px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .users-tabs {
+    flex-direction: column;
+  }
+  
+  .users-tab {
+    justify-content: flex-start;
+  }
+}
+
+

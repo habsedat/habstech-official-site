@@ -14,13 +14,14 @@ import clsx from 'clsx';
 
 const menuItems = [
   { href: '/admin/dashboard', label: 'Dashboard', icon: '📊' },
-  { href: '/admin/content', label: 'Content', icon: '📝' },
   { href: '/admin/services', label: 'Services', icon: '💼' },
-  { href: '/admin/applications', label: 'Applications', icon: '📋' },
-  { href: '/admin/contacts', label: 'Contacts', icon: '📧' },
+  { href: '/admin/applications', label: 'Applications', icon: '📋', roles: ['super_admin', 'admin'] },
+  { href: '/admin/contacts', label: 'Contacts', icon: '📧', roles: ['super_admin', 'admin'] },
   { href: '/admin/media', label: 'Media', icon: '🖼️' },
-  { href: '/admin/users', label: 'Users', icon: '👥' },
-  { href: '/admin/settings', label: 'Settings', icon: '⚙️' },
+  { href: '/admin/image-assignment', label: 'Image Assignment', icon: '🎯' },
+  { href: '/admin/news', label: 'News', icon: '📰', roles: ['super_admin', 'admin', 'editor'] },
+  { href: '/admin/users', label: 'Users', icon: '👥', roles: ['super_admin', 'admin'] },
+  { href: '/admin/settings', label: 'Settings', icon: '⚙️', roles: ['super_admin', 'admin'] },
 ];
 
 export default function Sidebar() {

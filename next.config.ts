@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   },
   // Disable API routes for static export
   // API routes will be added back later with Firebase Functions
+  generateBuildId: async () => {
+    return `build-${Date.now()}`;
+  },
 };
 
 export default nextConfig;

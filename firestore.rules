@@ -11,35 +11,57 @@ service cloud.firestore {
     function isAuthenticated() {
       return request.auth != null;
     }
-    
+
+    function isSuperAdmin() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'super_admin';
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['super_admin', 'admin'];
+    }
+
+    function isEditor() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['super_admin', 'admin', 'editor'];
+    }
+
     function isOwner() {
       return isAuthenticated() && 
              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'owner';
     }
     
-    function isAdmin() {
-      return isAuthenticated() && 
-             (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'owner' ||
-              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin');
-    }
-    
-    function isEditor() {
-      return isAuthenticated() && 
-             (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'owner' ||
-              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
-              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'editor');
-    }
-    
-    // Users collection - only admins can manage
+    // Users collection - authenticated users can create, super admins can manage all
     match /users/{userId} {
       allow read: if isAuthenticated();
-      allow write: if isOwner();
+      allow create: if isAuthenticated(); // Allow any authenticated user to create users
+      allow update, delete: if isSuperAdmin(); // Only super admins can update/delete
     }
     
-    // Pages collection - public read if published, editor write
+    // Roles collection - only super admins can manage
+    match /roles/{roleId} {
+      allow read: if isAuthenticated();
+      allow write: if isSuperAdmin();
+    }
+
+    // News collection - public read for published news, editors can read/write, admins can manage all
+    match /news/{newsId} {
+      allow read: if true; // Public read access for published news
+      allow create: if isEditor();
+      allow update: if isEditor() || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Visitors collection - only super admins can access
+    match /visitors/{visitorId} {
+      allow read, write: if isSuperAdmin();
+    }
+    
+    // Pages collection - public read, authenticated users can write (for development)
     match /pages/{pageId} {
-      allow read: if resource.data.published == true || isEditor();
-      allow write: if isEditor();
+      allow read: if true; // Public read access
+      allow write: if isAuthenticated(); // Any authenticated user can write
     }
     
     // Divisions collection - public read if published, editor write
@@ -54,30 +76,32 @@ service cloud.firestore {
       allow write: if isEditor();
     }
     
-    // Case Studies collection - public read if published, editor write
+    // Case Studies collection - public read, editor write
     match /caseStudies/{caseStudyId} {
-      allow read: if resource.data.published == true || isEditor();
+      allow read: if true; // Public read access
       allow write: if isEditor();
     }
     
-    // Applications collection - public create, authenticated read/update
+    // Applications collection - public create, admin read/update (editors cannot see)
     match /applications/{applicationId} {
       allow create: if true; // Anyone can submit
-      allow read, update: if isAuthenticated(); // Any authenticated user can read
-      allow delete: if isOwner();
+      allow read, update: if isAdmin(); // Only admins can see applications
+      allow delete: if isSuperAdmin();
     }
     
-    // Contacts collection - public create, authenticated read/update
+    // Contacts collection - public create, admin read/update (editors cannot see)
     match /contacts/{contactId} {
       allow create: if true; // Anyone can submit
-      allow read, update: if isAuthenticated(); // Any authenticated user can read
-      allow delete: if isOwner();
+      allow read, update: if isAdmin(); // Only admins can see contacts
+      allow delete: if isSuperAdmin();
     }
     
-    // Media collection - editor write, public read for published
+    // Media collection - public read, admin upload, editor use existing
     match /media/{mediaId} {
-      allow read: if resource.data.published == true || isEditor();
-      allow write: if isEditor();
+      allow read: if true; // Public read access
+      allow create: if isAdmin(); // Only admins can upload new files
+      allow update, delete: if isAdmin(); // Only admins can manage media
+      // Editors can read existing media but cannot upload new files
     }
     
     // Settings collection - public read, admin write
@@ -86,26 +110,11 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
     
-    // Logs collection - admin write, owner read
+    // Logs collection - authenticated users can create, super admin read
     match /logs/{logId} {
-      allow create: if isAdmin();
-      allow read: if isOwner();
+      allow create: if isAuthenticated(); // Any authenticated user can create logs
+      allow read: if isSuperAdmin();
       allow update, delete: if false; // Logs are immutable
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

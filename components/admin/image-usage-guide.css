@@ -1,0 +1,217 @@
+/**
+ * HABS TECHNOLOGIES GROUP
+ * Image Usage Guide Styles
+ */
+
+.image-usage-guide {
+  background: #1e293b;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  overflow: hidden;
+}
+
+.image-usage-guide__header {
+  padding: 2rem;
+  border-bottom: 1px solid #334155;
+  background: #334155;
+}
+
+.image-usage-guide__header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.image-usage-guide__header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.image-usage-guide__tabs {
+  display: flex;
+  border-bottom: 1px solid #334155;
+  background: #475569;
+}
+
+.image-usage-guide__tab {
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.image-usage-guide__tab:hover {
+  color: #ffffff;
+  background: #334155;
+}
+
+.image-usage-guide__tab--active {
+  color: #6c63ff;
+  border-bottom-color: #6c63ff;
+  background: #1e293b;
+}
+
+.image-usage-guide__content {
+  padding: 2rem;
+}
+
+.image-usage-guide__section h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.image-usage-guide__description {
+  margin: 0 0 2rem 0;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.image-usage-guide__locations {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.image-usage-guide__location {
+  border: 1px solid #334155;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image-usage-guide__location-header {
+  padding: 1rem 1.5rem;
+  background: #334155;
+  border-bottom: 1px solid #334155;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image-usage-guide__location-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.image-usage-guide__category {
+  padding: 0.25rem 0.5rem;
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.image-usage-guide__location-details {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #334155;
+}
+
+.image-usage-guide__location-details p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+.image-usage-guide__location-details p:last-child {
+  margin-bottom: 0;
+}
+
+.image-usage-guide__code {
+  padding: 1rem 1.5rem;
+  background: #1f2937;
+}
+
+.image-usage-guide__code h5 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.image-usage-guide__code pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+.image-usage-guide__code code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.75rem;
+  color: #e5e7eb;
+  line-height: 1.5;
+}
+
+.image-usage-guide__tips {
+  padding: 2rem;
+  border-top: 1px solid #334155;
+  background: #334155;
+}
+
+.image-usage-guide__tips h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.image-usage-guide__tips ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.image-usage-guide__tips li {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.image-usage-guide__tips li:last-child {
+  margin-bottom: 0;
+}
+
+.image-usage-guide__tips strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .image-usage-guide__tabs {
+    flex-wrap: wrap;
+  }
+  
+  .image-usage-guide__tab {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  .image-usage-guide__content,
+  .image-usage-guide__tips {
+    padding: 1.5rem;
+  }
+  
+  .image-usage-guide__location-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .image-usage-guide__location-details,
+  .image-usage-guide__code {
+    padding: 1rem;
+  }
+}
